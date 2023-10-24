@@ -16,8 +16,8 @@ pipeline {
                         publishHTML([allowMissing: false,
                         alwaysLinkToLastBuild: false,
                         keepAll: false,
-                        reportDir: 'target/site/serenity',
-                        reportFiles: 'index.html',
+                        reportDir: 'target/karate-reports/',
+                        reportFiles: 'karate-summary.html',
                         reportName: 'Test Result Report',
                         useWrapperFileDirectly: true])
                     }
