@@ -8,8 +8,6 @@ pipeline {
             stage('Test') {
                 steps {
                     sh "mvn clean verify"
-                    sh "cd /home/luisrestrepo/Documentos/CrudNodeJs"
-                    sh "json-server --watch users.json"
                 }
         	post{
                     always{
