@@ -8,7 +8,7 @@ Feature: manage users
     When method get
     Then status 200
 
-    * def usersQuantity = response.length
+    * def usersQuantity = response.length+1
     * print 'USERS FOUND: ', usersQuantity
 
   Scenario: create a user and then get it by id
@@ -48,13 +48,10 @@ Feature: manage users
     * def createdUserId = response.id
     * print 'CREATED USER ID IS: ', createdUserId
 
-    Given path 'users', id
+    Given path 'users', createdUserId
      When method get
      Then status 200
      And match response contains user
-
-    * def usersQuantity = response.length
-    * print 'NUMBER OF USERS FOUND AFTER CREATION: ', usersQuantity
 
   Scenario: delete a user and then search it by id
     Given path 'users'
@@ -74,4 +71,4 @@ Feature: manage users
     When method get
     Then status 404
 
-    * print 'THE DELETED USER IS NO LONGER FOUND WHEN SEARCHING FOR HIM: ', lastUser.id
+    * print 'THE DELETED USER IS NO LONGER FOUND WHEN SEARCHING FOR HIM: ', deleteUserId.id
